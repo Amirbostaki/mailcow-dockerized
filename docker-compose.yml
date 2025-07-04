@@ -426,16 +426,15 @@ services:
         - ./data/web/inc/sessions.inc.php:/mailcowauth/sessions.inc.php:z
         - sogo-web-vol-1:/usr/lib/GNUstep/SOGo/
       expose:
-        - "80"
-        - "443"
-    labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.mailcow.rule=Host(`mail.soulconsola.com`)"
-        - "traefik.http.routers.mailcow.entrypoints=web,websecure"
-        - "traefik.http.routers.mailcow.tls=true"
-        - "traefik.http.routers.mailcow.tls.certresolver=le"
-        - "traefik.http.services.mailcow.loadbalancer.server.port=80"
-
+         - "80"
+         - "443"
+      labels:
+         - "traefik.enable=true"
+         - "traefik.http.routers.mailcow.rule=Host(`mail.soulconsola.com`)"
+         - "traefik.http.routers.mailcow.entrypoints=web,websecure"
+         - "traefik.http.routers.mailcow.tls=true"
+         - "traefik.http.routers.mailcow.tls.certresolver=le"
+         - "traefik.http.services.mailcow.loadbalancer.server.port=80"
       restart: always
       networks:
         mailcow-network:
